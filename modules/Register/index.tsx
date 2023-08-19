@@ -7,23 +7,37 @@ import * as Yup from "yup";
 const Register = () => {
   const SignupSchema = Yup.object().shape({
     firstname: Yup.string()
-      .min(2, "Too Short!")
-      .max(10, "Too Long!")
-      
-      .required("First Name requirde"),
+      .min(4, "Too Short!")
+      .max(12, "Too Long!")
+      .required("Enter your first name"),
     lastname: Yup.string()
-      .min(2, "Too Short!")
-      .max(70, "Too Long!")
-      .required("lastname required"),
+      .min(4, "Too Short!")
+      .max(20, "Too Long!")
+      .required("Enter your last name"),
+    email: Yup.string()
+      .email("Invalid email")
+      .required("Enter a valid email address"),
+    phoneNumber: Yup.string()
+      .max(10, "Too Long!")
+      .required("Phone Number must be of 10 digits"),
+    password: Yup.string()
+      .min(6, "Too Short")
+      .max(10, "Too long!")
+      .required("Enter a Password"),
   });
+
   return (
     <div style={{ display: "flex" }}>
-      <div>
-        <h1>Input Your Information</h1>
+      <div className="ms-5 mt-5 ps-5 pt-5 flex-grow-1 ">
+        <h1>Register Your Account</h1>
         <Formik
           initialValues={{
             firstname: "",
-            Lastname: "",
+            lastname: "",
+            email: "",
+            phoneNumber: "",
+            password: "",
+            confirmPassword: "",
           }}
           validationSchema={SignupSchema}
           onSubmit={(values) => {
@@ -33,91 +47,110 @@ const Register = () => {
         >
           {({ errors, touched }) => (
             <Form>
-              <Row>
+              <Row className="mt-4">
                 <Col>
-                  <Form.Label name="firstname">First name</Form.Label>
+                  <Form.Label>First Name</Form.Label>
                   <Field
-                    type="text"
-                    id="name"
                     name="firstname"
-                    placeholder="First name"
-                    style={{border:'1px solid'}}
-
-                    className={
-                      touched.firstname && errors.firstname ? "error" : ""
-                    }
+                    placeholder="firstname"
+                    className="d-block border border-2 rounded-bottom-5 p-1 ps-3 pe-2"
                   />
                   <ErrorMessage
                     name="firstname"
                     component="div"
-                    className="error-message"
+                    className="text-danger"
                   />
                 </Col>
 
                 <Col>
-                  <Form.Label name="Lastname">Last name</Form.Label>
+                  <Form.Label>Last Name</Form.Label>
                   <Field
-                    type="text"
-                    id="name"
-                    name="Lastname"
-                    placeholder="Last name"
-                    style={{border:'1px solid'}}
-
-                    className={
-                      touched.Lastname && errors.Lastname ? "error" : ""
-                    }
+                    name="lastname"
+                    placeholder="Last Name"
+                    className="d-block border border-2 rounded-bottom-5 p-1 ps-3 pe-2"
                   />
                   <ErrorMessage
-                    name="Lastname"
+                    name="lastname"
                     component="div"
-                    className="error-message"
+                    className="text-danger"
                   />
                 </Col>
               </Row>
-              <Row>
+
+              <Row className="mt-4">
                 <Col>
-                  <Form.Label>Company</Form.Label>
-
-                  <Form.Control placeholder="Company" />
+                  <Form.Label>Email</Form.Label>
+                  <Field
+                    name="email"
+                    placeholder="Email"
+                    className="d-block border border-2 rounded-bottom-5 p-1 ps-3 pe-2"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-danger"
+                  />
                 </Col>
-                <Col>
-                  <Form.Label>Website</Form.Label>
 
-                  <Form.Control placeholder="Website" />
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <Form.Label>number of Employees</Form.Label>
-
-                  <Form.Control placeholder="number of Employees" />
-                </Col>
                 <Col>
                   <Form.Label>Phone Number</Form.Label>
-
-                  <Form.Control placeholder="Phone Number" />
+                  <Field
+                    name="phoneNumber"
+                    placeholder="Phone Number"
+                    className="d-block border border-2 rounded-bottom-5 p-1 ps-3 pe-2"
+                  />
+                  <ErrorMessage
+                    name="phoneNumber"
+                    component="div"
+                    className="text-danger"
+                  />
                 </Col>
               </Row>
 
-              <Row>
+              <Row className="mt-4">
                 <Col>
                   <Form.Label>Password</Form.Label>
-
-                  <Form.Control placeholder="Password" />
+                  <Field
+                    name="password"
+                    placeholder="Password"
+                    className="d-block border border-2 rounded-bottom-5 p-1 ps-3 pe-2"
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="text-danger"
+                  />
                 </Col>
+
                 <Col>
                   <Form.Label>Confirm Password</Form.Label>
-
-                  <Form.Control placeholder="Confirm Password" />
+                  <Field
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                    className="d-block border border-2 rounded-bottom-5 p-1 ps-3 pe-2"
+                  />
+                  <ErrorMessage
+                    name="confirmPassword"
+                    component="div"
+                    className="text-danger"
+                  />
                 </Col>
               </Row>
             </Form>
           )}
         </Formik>
+
+<div className="d-flex judtify-content-between mt-5 ">
+
+        <Form.Check label="I agree with terms and conditions" />
+        <div style={{flex:"1",textAlign:"center"}}>
+
+        <button className="btn btn-primary">Register</button>
+        </div>
+</div>
       </div>
 
-      <div style={{ height: "100vh" }}>
+      <div style={{ height: "100vh", width: "45%" }}>
         <Image
           src={Icon}
           alt="Network Error"
@@ -175,4 +208,3 @@ export default Register;
 // );
 
 // export default ValidationSchemaExample;
-fgfgdfbdbgdbgfdgnfhnghnhgnghnhngh
