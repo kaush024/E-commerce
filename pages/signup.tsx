@@ -1,11 +1,12 @@
 import Register from "@/modules/Register";
-
-// import React from 'react'
+import React from "react";
 
 function signup() {
   return (
-    <div>    <Register/></div>
-  )
+    <div>
+      <Register />
+    </div>
+  );
 }
 
-export default signup
+export default signup;

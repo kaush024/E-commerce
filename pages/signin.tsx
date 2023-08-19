@@ -1,11 +1,12 @@
 import Login from "@/modules/Login";
-
-import React from 'react'
+import React from "react";
 
 function signin() {
   return (
-    <div>    <Login/></div>
-  )
+    <div>
+      <Login />
+    </div>
+  );
 }
 
-export default signin
+export default signin;
