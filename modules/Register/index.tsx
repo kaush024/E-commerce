@@ -14,7 +14,6 @@ import {
   TERMS,
   REGISTER,
 } from "./constant";
-import { El_Messiri } from "next/font/google";
 
 const Register = () => {
   const SignupSchema = Yup.object().shape({
@@ -36,6 +35,9 @@ const Register = () => {
       .min(6, "Too Short")
       .max(10, "Too long!")
       .required("Enter a Password"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password")], "Passwords must match")
+      .required("Required"),
   });
 
   return (
